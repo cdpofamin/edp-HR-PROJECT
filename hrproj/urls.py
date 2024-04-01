@@ -16,7 +16,16 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
+from . import views
+from .views import edit_employee
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('', views.home, name='home'),
+    path('employee_form/', views.employee_form, name='employee_form'),
+    path('assign_designation_form/', views.assign_designation_form, name='assign_designation_form'),
+    path('employee_list/', views.employee_list, name='employee_list'),  
+    path('view_employee/<int:employee_id>/', views.view_employee, name='view_employee'),  # Adjusted URL pattern
+    path('edit_employee/<int:employee_id>/', edit_employee, name='edit_employee'),
+    path('employee/delete/<int:employee_id>/', views.delete_employee, name='delete_employee'),
 ]

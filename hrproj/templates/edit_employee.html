@@ -1,0 +1,54 @@
+<!-- edit_employee.html -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit Employee Details</title>
+</head>
+<body>
+    <h1>Edit Employee Details</h1>
+    <form method="POST">
+        {% csrf_token %}
+        <!-- Employee Number field (readonly) -->
+        <label for="employee_number">Employee Number:</label><br>
+        <input type="text" id="employee_number" name="employee_number" value="{{ form.instance.employee_number }}" readonly><br>
+        
+        <!-- First Name field -->
+        <label for="firstname">First Name:</label><br>
+        <input type="text" id="firstname" name="firstname" value="{{ form.instance.firstname }}" required><br>
+        
+        <!-- Middle Name field -->
+        <label for="middlename">Middle Name:</label><br>
+        <input type="text" id="middlename" name="middlename" value="{{ form.instance.middlename }}"><br>
+        
+        <!-- Last Name field -->
+        <label for="lastname">Last Name:</label><br>
+        <input type="text" id="lastname" name="lastname" value="{{ form.instance.lastname }}" required><br>
+        
+        <!-- Address Line field -->
+        <label for="addressln">Address Line:</label><br>
+        <input type="text" id="addressln" name="addressln" value="{{ form.instance.addressln }}" required><br>
+        
+        <!-- Baranggay field -->
+        <label for="baranggay">Baranggay:</label><br>
+        <input type="text" id="baranggay" name="baranggay" value="{{ form.instance.baranggay }}" required><br>
+        
+        <!-- City field -->
+        <label for="city">City:</label><br>
+        <input type="text" id="city" name="city" value="{{ form.instance.city }}" required><br>
+        
+        <!-- Province field -->
+        <label for="province">Province:</label><br>
+        <input type="text" id="province" name="province" value="{{ form.instance.province }}" required><br>
+        
+        <!-- Zip Code field -->
+        <label for="zipcode">Zip Code:</label><br>
+        <input type="text" id="zipcode" name="zipcode" value="{{ form.instance.zipcode }}" required><br>
+        
+        <!-- Submit button -->
+        <input type="submit" value="Update">
+    </form>
+</body>
+</html>

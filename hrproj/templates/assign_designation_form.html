@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Assign Designation</title>
+</head>
+<body>
+    <h1>Assign Designation</h1>
+    <form method="POST">
+        {% csrf_token %}
+        <label for="employee_number">Employee Name:</label><br>
+        {{ form.employee_number }}
+        <br>
+        
+        <label for="designation">Designation:</label><br>
+        {{ form.designation }}
+        <br>
+        
+        <label for="employee_type">Employee Type:</label><br>
+        <input type="text" id="employee_type" name="employee_type" required><br>
+        
+        <label for="status">Status:</label><br>
+        <input type="text" id="status" name="status" required><br>
+
+        
+        <input type="submit" value="Submit">
+    </form>
+</body>
+</html>

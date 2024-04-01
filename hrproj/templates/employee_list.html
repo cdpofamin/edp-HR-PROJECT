@@ -1,0 +1,56 @@
+<!-- employee_list.html -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Employee List</title>
+</head>
+<body>
+    <h1>Employee List</h1>
+    <table>
+        <thead>
+            <tr>
+                <th>Employee Number</th>
+                <th>First Name</th>
+                <th>Middle Name</th>
+                <th>Last Name</th>
+                <th>Address</th>
+                <th>Baranggay</th>
+                <th>City</th>
+                <th>Province</th>
+                <th>Zipcode</th>
+                <th>Action</th> <!-- New column for the Edit and Delete buttons -->
+            </tr>
+        </thead>
+        <tbody>
+            {% for employee in employees %}
+            <tr>
+                <td>{{ employee.employee_number }}</td>
+                <td>{{ employee.firstname }}</td>
+                <td>{{ employee.middlename }}</td>
+                <td>{{ employee.lastname }}</td>
+                <td>{{ employee.addressln }}</td>
+                <td>{{ employee.baranggay }}</td>
+                <td>{{ employee.city }}</td>
+                <td>{{ employee.province }}</td>
+                <td>{{ employee.zipcode }}</td>
+                <td>
+                    <!-- Edit button as a button -->
+                    <form action="{% url 'edit_employee' employee.id %}" method="get">
+                        <button type="submit">Edit</button>
+                    </form>
+                    
+                    <!-- Delete button with confirmation dialog -->
+                    <form action="{% url 'delete_employee' employee.id %}" method="post" onsubmit="return confirm('Are you sure you want to delete this employee?');">
+                        {% csrf_token %}
+                        <input type="submit" value="Delete">
+                    </form>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</body>
+</html>

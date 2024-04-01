@@ -10,7 +10,7 @@ class Designation(models.Model):
         return self.designation_name
 
 class Department(models.Model):
-    department_id = models.AutoField(primary_key=True)
+    department_id = models.AutoField(primary_key=True, default='default_value_here')  # Set your default value here
     department_name = models.CharField(max_length=100)
     status = models.CharField(max_length=100)
 
@@ -19,7 +19,7 @@ class Department(models.Model):
 
 class Employee(models.Model):
     id = models.AutoField(primary_key=True)
-    employee_number = models.CharField(max_length=100, unique=True, default='DEFAULT_VALUE')
+    employee_number = models.CharField(max_length=100)
     firstname = models.CharField(max_length=100)
     middlename = models.CharField(max_length=100)
     lastname = models.CharField(max_length=100)
@@ -30,15 +30,16 @@ class Employee(models.Model):
     zipcode = models.CharField(max_length=100)
 
     def __str__(self):
-        return self.lastname or ''
+        return f"{self.firstname} {self.middlename} {self.lastname}"
 
-class assignDesignation(models.Model):
+
+
+class AssignDesignation(models.Model):
     id = models.AutoField(primary_key=True)   
     employee_number = models.ForeignKey(Employee, on_delete=models.CASCADE)
-    designation_id = models.CharField(max_length=100)
+    designation_id = models.CharField(max_length=100, default='default_value_here') 
     employee_type = models.CharField(max_length=100)
     status = models.CharField(max_length=100)
 
     def __str__(self):
-        return str(self.designation_id) 
-
+        return str(self.designation_id)
